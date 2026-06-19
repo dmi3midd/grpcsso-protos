@@ -87,16 +87,3 @@ service AuthService {
   rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
   rpc ConfirmResetPassword(ConfirmResetPasswordRequest) returns (ConfirmResetPasswordResponse);
 }
-
-message LinkClientRequest {
-  string client_id = 1;
-  string client_secret = 2;
-}
-
-message LinkClientResponse {
-  string client_id = 1;
-}
-
-service ClientService {
-  rpc LinkClient(LinkClientRequest) returns (LinkClientResponse);
-}

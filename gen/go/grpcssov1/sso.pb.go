@@ -809,102 +809,6 @@ func (*ConfirmResetPasswordResponse) Descriptor() ([]byte, []int) {
 	return file_sso_proto_rawDescGZIP(), []int{14}
 }
 
-type LinkClientRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClientId      string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
-	ClientSecret  string                 `protobuf:"bytes,2,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LinkClientRequest) Reset() {
-	*x = LinkClientRequest{}
-	mi := &file_sso_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LinkClientRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LinkClientRequest) ProtoMessage() {}
-
-func (x *LinkClientRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LinkClientRequest.ProtoReflect.Descriptor instead.
-func (*LinkClientRequest) Descriptor() ([]byte, []int) {
-	return file_sso_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *LinkClientRequest) GetClientId() string {
-	if x != nil {
-		return x.ClientId
-	}
-	return ""
-}
-
-func (x *LinkClientRequest) GetClientSecret() string {
-	if x != nil {
-		return x.ClientSecret
-	}
-	return ""
-}
-
-type LinkClientResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClientId      string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LinkClientResponse) Reset() {
-	*x = LinkClientResponse{}
-	mi := &file_sso_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LinkClientResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LinkClientResponse) ProtoMessage() {}
-
-func (x *LinkClientResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LinkClientResponse.ProtoReflect.Descriptor instead.
-func (*LinkClientResponse) Descriptor() ([]byte, []int) {
-	return file_sso_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *LinkClientResponse) GetClientId() string {
-	if x != nil {
-		return x.ClientId
-	}
-	return ""
-}
-
 var File_sso_proto protoreflect.FileDescriptor
 
 const file_sso_proto_rawDesc = "" +
@@ -955,12 +859,7 @@ const file_sso_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x14\n" +
 	"\x05token\x18\x02 \x01(\tR\x05token\x12!\n" +
 	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\"\x1e\n" +
-	"\x1cConfirmResetPasswordResponse\"U\n" +
-	"\x11LinkClientRequest\x12\x1b\n" +
-	"\tclient_id\x18\x01 \x01(\tR\bclientId\x12#\n" +
-	"\rclient_secret\x18\x02 \x01(\tR\fclientSecret\"1\n" +
-	"\x12LinkClientResponse\x12\x1b\n" +
-	"\tclient_id\x18\x01 \x01(\tR\bclientId2\xa2\x04\n" +
+	"\x1cConfirmResetPasswordResponse2\xa2\x04\n" +
 	"\vAuthService\x12K\n" +
 	"\fRegistration\x12\x1c.grpcsso.RegistrationRequest\x1a\x1d.grpcsso.RegistrationResponse\x12`\n" +
 	"\x13ConfirmRegistration\x12#.grpcsso.ConfirmRegistrationRequest\x1a$.grpcsso.ConfirmRegistrationResponse\x126\n" +
@@ -968,10 +867,7 @@ const file_sso_proto_rawDesc = "" +
 	"\x06Logout\x12\x16.grpcsso.LogoutRequest\x1a\x17.grpcsso.LogoutResponse\x12<\n" +
 	"\aRefresh\x12\x17.grpcsso.RefreshRequest\x1a\x18.grpcsso.RefreshResponse\x12N\n" +
 	"\rResetPassword\x12\x1d.grpcsso.ResetPasswordRequest\x1a\x1e.grpcsso.ResetPasswordResponse\x12c\n" +
-	"\x14ConfirmResetPassword\x12$.grpcsso.ConfirmResetPasswordRequest\x1a%.grpcsso.ConfirmResetPasswordResponse2V\n" +
-	"\rClientService\x12E\n" +
-	"\n" +
-	"LinkClient\x12\x1a.grpcsso.LinkClientRequest\x1a\x1b.grpcsso.LinkClientResponseB5Z3github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1b\x06proto3"
+	"\x14ConfirmResetPassword\x12$.grpcsso.ConfirmResetPasswordRequest\x1a%.grpcsso.ConfirmResetPasswordResponseB5Z3github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1b\x06proto3"
 
 var (
 	file_sso_proto_rawDescOnce sync.Once
@@ -985,7 +881,7 @@ func file_sso_proto_rawDescGZIP() []byte {
 	return file_sso_proto_rawDescData
 }
 
-var file_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_sso_proto_goTypes = []any{
 	(*RegistrationRequest)(nil),          // 0: grpcsso.RegistrationRequest
 	(*RegistrationResponse)(nil),         // 1: grpcsso.RegistrationResponse
@@ -1002,8 +898,6 @@ var file_sso_proto_goTypes = []any{
 	(*ResetPasswordResponse)(nil),        // 12: grpcsso.ResetPasswordResponse
 	(*ConfirmResetPasswordRequest)(nil),  // 13: grpcsso.ConfirmResetPasswordRequest
 	(*ConfirmResetPasswordResponse)(nil), // 14: grpcsso.ConfirmResetPasswordResponse
-	(*LinkClientRequest)(nil),            // 15: grpcsso.LinkClientRequest
-	(*LinkClientResponse)(nil),           // 16: grpcsso.LinkClientResponse
 }
 var file_sso_proto_depIdxs = []int32{
 	5,  // 0: grpcsso.LoginResponse.user:type_name -> grpcsso.User
@@ -1015,17 +909,15 @@ var file_sso_proto_depIdxs = []int32{
 	9,  // 6: grpcsso.AuthService.Refresh:input_type -> grpcsso.RefreshRequest
 	11, // 7: grpcsso.AuthService.ResetPassword:input_type -> grpcsso.ResetPasswordRequest
 	13, // 8: grpcsso.AuthService.ConfirmResetPassword:input_type -> grpcsso.ConfirmResetPasswordRequest
-	15, // 9: grpcsso.ClientService.LinkClient:input_type -> grpcsso.LinkClientRequest
-	1,  // 10: grpcsso.AuthService.Registration:output_type -> grpcsso.RegistrationResponse
-	3,  // 11: grpcsso.AuthService.ConfirmRegistration:output_type -> grpcsso.ConfirmRegistrationResponse
-	6,  // 12: grpcsso.AuthService.Login:output_type -> grpcsso.LoginResponse
-	8,  // 13: grpcsso.AuthService.Logout:output_type -> grpcsso.LogoutResponse
-	10, // 14: grpcsso.AuthService.Refresh:output_type -> grpcsso.RefreshResponse
-	12, // 15: grpcsso.AuthService.ResetPassword:output_type -> grpcsso.ResetPasswordResponse
-	14, // 16: grpcsso.AuthService.ConfirmResetPassword:output_type -> grpcsso.ConfirmResetPasswordResponse
-	16, // 17: grpcsso.ClientService.LinkClient:output_type -> grpcsso.LinkClientResponse
-	10, // [10:18] is the sub-list for method output_type
-	2,  // [2:10] is the sub-list for method input_type
+	1,  // 9: grpcsso.AuthService.Registration:output_type -> grpcsso.RegistrationResponse
+	3,  // 10: grpcsso.AuthService.ConfirmRegistration:output_type -> grpcsso.ConfirmRegistrationResponse
+	6,  // 11: grpcsso.AuthService.Login:output_type -> grpcsso.LoginResponse
+	8,  // 12: grpcsso.AuthService.Logout:output_type -> grpcsso.LogoutResponse
+	10, // 13: grpcsso.AuthService.Refresh:output_type -> grpcsso.RefreshResponse
+	12, // 14: grpcsso.AuthService.ResetPassword:output_type -> grpcsso.ResetPasswordResponse
+	14, // 15: grpcsso.AuthService.ConfirmResetPassword:output_type -> grpcsso.ConfirmResetPasswordResponse
+	9,  // [9:16] is the sub-list for method output_type
+	2,  // [2:9] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name
@@ -1042,9 +934,9 @@ func file_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_proto_rawDesc), len(file_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   15,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   1,
 		},
 		GoTypes:           file_sso_proto_goTypes,
 		DependencyIndexes: file_sso_proto_depIdxs,
