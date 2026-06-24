@@ -19,13 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_Registration_FullMethodName         = "/grpcsso.AuthService/Registration"
-	AuthService_ConfirmRegistration_FullMethodName  = "/grpcsso.AuthService/ConfirmRegistration"
-	AuthService_Login_FullMethodName                = "/grpcsso.AuthService/Login"
-	AuthService_Logout_FullMethodName               = "/grpcsso.AuthService/Logout"
-	AuthService_Refresh_FullMethodName              = "/grpcsso.AuthService/Refresh"
-	AuthService_ResetPassword_FullMethodName        = "/grpcsso.AuthService/ResetPassword"
-	AuthService_ConfirmResetPassword_FullMethodName = "/grpcsso.AuthService/ConfirmResetPassword"
+	AuthService_Registration_FullMethodName = "/grpcsso.AuthService/Registration"
+	AuthService_Login_FullMethodName        = "/grpcsso.AuthService/Login"
+	AuthService_Logout_FullMethodName       = "/grpcsso.AuthService/Logout"
+	AuthService_Refresh_FullMethodName      = "/grpcsso.AuthService/Refresh"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -33,12 +30,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	Registration(ctx context.Context, in *RegistrationRequest, opts ...grpc.CallOption) (*RegistrationResponse, error)
-	ConfirmRegistration(ctx context.Context, in *ConfirmRegistrationRequest, opts ...grpc.CallOption) (*ConfirmRegistrationResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*RefreshResponse, error)
-	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
-	ConfirmResetPassword(ctx context.Context, in *ConfirmResetPasswordRequest, opts ...grpc.CallOption) (*ConfirmResetPasswordResponse, error)
 }
 
 type authServiceClient struct {
@@ -53,16 +47,6 @@ func (c *authServiceClient) Registration(ctx context.Context, in *RegistrationRe
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RegistrationResponse)
 	err := c.cc.Invoke(ctx, AuthService_Registration_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) ConfirmRegistration(ctx context.Context, in *ConfirmRegistrationRequest, opts ...grpc.CallOption) (*ConfirmRegistrationResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ConfirmRegistrationResponse)
-	err := c.cc.Invoke(ctx, AuthService_ConfirmRegistration_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,37 +83,14 @@ func (c *authServiceClient) Refresh(ctx context.Context, in *RefreshRequest, opt
 	return out, nil
 }
 
-func (c *authServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetPasswordResponse)
-	err := c.cc.Invoke(ctx, AuthService_ResetPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) ConfirmResetPassword(ctx context.Context, in *ConfirmResetPasswordRequest, opts ...grpc.CallOption) (*ConfirmResetPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ConfirmResetPasswordResponse)
-	err := c.cc.Invoke(ctx, AuthService_ConfirmResetPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
 type AuthServiceServer interface {
 	Registration(context.Context, *RegistrationRequest) (*RegistrationResponse, error)
-	ConfirmRegistration(context.Context, *ConfirmRegistrationRequest) (*ConfirmRegistrationResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error)
-	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
-	ConfirmResetPassword(context.Context, *ConfirmResetPasswordRequest) (*ConfirmResetPasswordResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -143,9 +104,6 @@ type UnimplementedAuthServiceServer struct{}
 func (UnimplementedAuthServiceServer) Registration(context.Context, *RegistrationRequest) (*RegistrationResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Registration not implemented")
 }
-func (UnimplementedAuthServiceServer) ConfirmRegistration(context.Context, *ConfirmRegistrationRequest) (*ConfirmRegistrationResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ConfirmRegistration not implemented")
-}
 func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Login not implemented")
 }
@@ -154,12 +112,6 @@ func (UnimplementedAuthServiceServer) Logout(context.Context, *LogoutRequest) (*
 }
 func (UnimplementedAuthServiceServer) Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Refresh not implemented")
-}
-func (UnimplementedAuthServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ResetPassword not implemented")
-}
-func (UnimplementedAuthServiceServer) ConfirmResetPassword(context.Context, *ConfirmResetPasswordRequest) (*ConfirmResetPasswordResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ConfirmResetPassword not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -196,24 +148,6 @@ func _AuthService_Registration_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).Registration(ctx, req.(*RegistrationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_ConfirmRegistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfirmRegistrationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).ConfirmRegistration(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_ConfirmRegistration_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).ConfirmRegistration(ctx, req.(*ConfirmRegistrationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -272,42 +206,6 @@ func _AuthService_Refresh_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).ResetPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_ResetPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).ResetPassword(ctx, req.(*ResetPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_ConfirmResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfirmResetPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).ConfirmResetPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_ConfirmResetPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).ConfirmResetPassword(ctx, req.(*ConfirmResetPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -318,10 +216,6 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Registration",
 			Handler:    _AuthService_Registration_Handler,
-		},
-		{
-			MethodName: "ConfirmRegistration",
-			Handler:    _AuthService_ConfirmRegistration_Handler,
 		},
 		{
 			MethodName: "Login",
@@ -335,13 +229,361 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "Refresh",
 			Handler:    _AuthService_Refresh_Handler,
 		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "sso.proto",
+}
+
+const (
+	ResetPasswordService_InitiateResetPassword_FullMethodName = "/grpcsso.ResetPasswordService/InitiateResetPassword"
+	ResetPasswordService_ConfirmResetPassword_FullMethodName  = "/grpcsso.ResetPasswordService/ConfirmResetPassword"
+)
+
+// ResetPasswordServiceClient is the client API for ResetPasswordService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ResetPasswordServiceClient interface {
+	InitiateResetPassword(ctx context.Context, in *InitiateResetPasswordRequest, opts ...grpc.CallOption) (*InitiateResetPasswordResponse, error)
+	ConfirmResetPassword(ctx context.Context, in *ConfirmResetPasswordRequest, opts ...grpc.CallOption) (*ConfirmResetPasswordResponse, error)
+}
+
+type resetPasswordServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewResetPasswordServiceClient(cc grpc.ClientConnInterface) ResetPasswordServiceClient {
+	return &resetPasswordServiceClient{cc}
+}
+
+func (c *resetPasswordServiceClient) InitiateResetPassword(ctx context.Context, in *InitiateResetPasswordRequest, opts ...grpc.CallOption) (*InitiateResetPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(InitiateResetPasswordResponse)
+	err := c.cc.Invoke(ctx, ResetPasswordService_InitiateResetPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resetPasswordServiceClient) ConfirmResetPassword(ctx context.Context, in *ConfirmResetPasswordRequest, opts ...grpc.CallOption) (*ConfirmResetPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfirmResetPasswordResponse)
+	err := c.cc.Invoke(ctx, ResetPasswordService_ConfirmResetPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ResetPasswordServiceServer is the server API for ResetPasswordService service.
+// All implementations must embed UnimplementedResetPasswordServiceServer
+// for forward compatibility.
+type ResetPasswordServiceServer interface {
+	InitiateResetPassword(context.Context, *InitiateResetPasswordRequest) (*InitiateResetPasswordResponse, error)
+	ConfirmResetPassword(context.Context, *ConfirmResetPasswordRequest) (*ConfirmResetPasswordResponse, error)
+	mustEmbedUnimplementedResetPasswordServiceServer()
+}
+
+// UnimplementedResetPasswordServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedResetPasswordServiceServer struct{}
+
+func (UnimplementedResetPasswordServiceServer) InitiateResetPassword(context.Context, *InitiateResetPasswordRequest) (*InitiateResetPasswordResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method InitiateResetPassword not implemented")
+}
+func (UnimplementedResetPasswordServiceServer) ConfirmResetPassword(context.Context, *ConfirmResetPasswordRequest) (*ConfirmResetPasswordResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ConfirmResetPassword not implemented")
+}
+func (UnimplementedResetPasswordServiceServer) mustEmbedUnimplementedResetPasswordServiceServer() {}
+func (UnimplementedResetPasswordServiceServer) testEmbeddedByValue()                              {}
+
+// UnsafeResetPasswordServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ResetPasswordServiceServer will
+// result in compilation errors.
+type UnsafeResetPasswordServiceServer interface {
+	mustEmbedUnimplementedResetPasswordServiceServer()
+}
+
+func RegisterResetPasswordServiceServer(s grpc.ServiceRegistrar, srv ResetPasswordServiceServer) {
+	// If the following call panics, it indicates UnimplementedResetPasswordServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&ResetPasswordService_ServiceDesc, srv)
+}
+
+func _ResetPasswordService_InitiateResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InitiateResetPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResetPasswordServiceServer).InitiateResetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResetPasswordService_InitiateResetPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResetPasswordServiceServer).InitiateResetPassword(ctx, req.(*InitiateResetPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResetPasswordService_ConfirmResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConfirmResetPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResetPasswordServiceServer).ConfirmResetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResetPasswordService_ConfirmResetPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResetPasswordServiceServer).ConfirmResetPassword(ctx, req.(*ConfirmResetPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// ResetPasswordService_ServiceDesc is the grpc.ServiceDesc for ResetPasswordService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ResetPasswordService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "grpcsso.ResetPasswordService",
+	HandlerType: (*ResetPasswordServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ResetPassword",
-			Handler:    _AuthService_ResetPassword_Handler,
+			MethodName: "InitiateResetPassword",
+			Handler:    _ResetPasswordService_InitiateResetPassword_Handler,
 		},
 		{
 			MethodName: "ConfirmResetPassword",
-			Handler:    _AuthService_ConfirmResetPassword_Handler,
+			Handler:    _ResetPasswordService_ConfirmResetPassword_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "sso.proto",
+}
+
+const (
+	PermissionService_HasPermissions_FullMethodName    = "/grpcsso.PermissionService/HasPermissions"
+	PermissionService_GetPermissions_FullMethodName    = "/grpcsso.PermissionService/GetPermissions"
+	PermissionService_AddPermissions_FullMethodName    = "/grpcsso.PermissionService/AddPermissions"
+	PermissionService_RemovePermissions_FullMethodName = "/grpcsso.PermissionService/RemovePermissions"
+)
+
+// PermissionServiceClient is the client API for PermissionService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type PermissionServiceClient interface {
+	HasPermissions(ctx context.Context, in *HasPermissionsRequest, opts ...grpc.CallOption) (*HasPermissionsResponse, error)
+	GetPermissions(ctx context.Context, in *GetPermissionsRequest, opts ...grpc.CallOption) (*GetPermissionsResponse, error)
+	AddPermissions(ctx context.Context, in *AddPermissionsRequest, opts ...grpc.CallOption) (*AddPermissionsResponse, error)
+	RemovePermissions(ctx context.Context, in *RemovePermissionsRequest, opts ...grpc.CallOption) (*RemovePermissionsResponse, error)
+}
+
+type permissionServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewPermissionServiceClient(cc grpc.ClientConnInterface) PermissionServiceClient {
+	return &permissionServiceClient{cc}
+}
+
+func (c *permissionServiceClient) HasPermissions(ctx context.Context, in *HasPermissionsRequest, opts ...grpc.CallOption) (*HasPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HasPermissionsResponse)
+	err := c.cc.Invoke(ctx, PermissionService_HasPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) GetPermissions(ctx context.Context, in *GetPermissionsRequest, opts ...grpc.CallOption) (*GetPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPermissionsResponse)
+	err := c.cc.Invoke(ctx, PermissionService_GetPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) AddPermissions(ctx context.Context, in *AddPermissionsRequest, opts ...grpc.CallOption) (*AddPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddPermissionsResponse)
+	err := c.cc.Invoke(ctx, PermissionService_AddPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) RemovePermissions(ctx context.Context, in *RemovePermissionsRequest, opts ...grpc.CallOption) (*RemovePermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemovePermissionsResponse)
+	err := c.cc.Invoke(ctx, PermissionService_RemovePermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// PermissionServiceServer is the server API for PermissionService service.
+// All implementations must embed UnimplementedPermissionServiceServer
+// for forward compatibility.
+type PermissionServiceServer interface {
+	HasPermissions(context.Context, *HasPermissionsRequest) (*HasPermissionsResponse, error)
+	GetPermissions(context.Context, *GetPermissionsRequest) (*GetPermissionsResponse, error)
+	AddPermissions(context.Context, *AddPermissionsRequest) (*AddPermissionsResponse, error)
+	RemovePermissions(context.Context, *RemovePermissionsRequest) (*RemovePermissionsResponse, error)
+	mustEmbedUnimplementedPermissionServiceServer()
+}
+
+// UnimplementedPermissionServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedPermissionServiceServer struct{}
+
+func (UnimplementedPermissionServiceServer) HasPermissions(context.Context, *HasPermissionsRequest) (*HasPermissionsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method HasPermissions not implemented")
+}
+func (UnimplementedPermissionServiceServer) GetPermissions(context.Context, *GetPermissionsRequest) (*GetPermissionsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetPermissions not implemented")
+}
+func (UnimplementedPermissionServiceServer) AddPermissions(context.Context, *AddPermissionsRequest) (*AddPermissionsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddPermissions not implemented")
+}
+func (UnimplementedPermissionServiceServer) RemovePermissions(context.Context, *RemovePermissionsRequest) (*RemovePermissionsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RemovePermissions not implemented")
+}
+func (UnimplementedPermissionServiceServer) mustEmbedUnimplementedPermissionServiceServer() {}
+func (UnimplementedPermissionServiceServer) testEmbeddedByValue()                           {}
+
+// UnsafePermissionServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to PermissionServiceServer will
+// result in compilation errors.
+type UnsafePermissionServiceServer interface {
+	mustEmbedUnimplementedPermissionServiceServer()
+}
+
+func RegisterPermissionServiceServer(s grpc.ServiceRegistrar, srv PermissionServiceServer) {
+	// If the following call panics, it indicates UnimplementedPermissionServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&PermissionService_ServiceDesc, srv)
+}
+
+func _PermissionService_HasPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HasPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).HasPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_HasPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).HasPermissions(ctx, req.(*HasPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_GetPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).GetPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_GetPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).GetPermissions(ctx, req.(*GetPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_AddPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).AddPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_AddPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).AddPermissions(ctx, req.(*AddPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_RemovePermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemovePermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).RemovePermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_RemovePermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).RemovePermissions(ctx, req.(*RemovePermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// PermissionService_ServiceDesc is the grpc.ServiceDesc for PermissionService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var PermissionService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "grpcsso.PermissionService",
+	HandlerType: (*PermissionServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "HasPermissions",
+			Handler:    _PermissionService_HasPermissions_Handler,
+		},
+		{
+			MethodName: "GetPermissions",
+			Handler:    _PermissionService_GetPermissions_Handler,
+		},
+		{
+			MethodName: "AddPermissions",
+			Handler:    _PermissionService_AddPermissions_Handler,
+		},
+		{
+			MethodName: "RemovePermissions",
+			Handler:    _PermissionService_RemovePermissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

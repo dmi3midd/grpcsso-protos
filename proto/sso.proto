@@ -16,15 +16,6 @@ message RegistrationResponse {
   string user_id = 1;
 }
 
-message ConfirmRegistrationRequest {
-  string user_id = 1;
-  string token = 2;
-}
-
-message ConfirmRegistrationResponse {
-  string user_id = 1;
-}
-
 message LoginRequest {
   string email = 1;
   string password = 2;
@@ -35,13 +26,14 @@ message User {
   string user_id = 1;
   string username = 2;
   string email = 3;
-  repeated string permissions = 4;
 }
 
 message LoginResponse {
-  User user = 1;
-  string access_token = 2;
-  string refresh_token = 3;
+  string client_id = 1;
+  User user = 2;
+  repeated string permissions = 3;
+  string access_token = 4;
+  string refresh_token = 5;
 }
 
 message LogoutRequest {
@@ -56,16 +48,25 @@ message RefreshRequest {
 }
 
 message RefreshResponse {
-  User user = 1;
-  string access_token = 2;
-  string refresh_token = 3;
+  string client_id = 1;
+  User user = 2;
+  repeated string permissions = 3;
+  string access_token = 4;
+  string refresh_token = 5;
 }
 
-message ResetPasswordRequest {
+service AuthService {
+  rpc Registration(RegistrationRequest) returns (RegistrationResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc Refresh(RefreshRequest) returns (RefreshResponse);
+}
+
+message InitiateResetPasswordRequest {
   string email = 1;
 }
 
-message ResetPasswordResponse {
+message InitiateResetPasswordResponse {
   string email = 1;
   string token = 2;
 }
@@ -78,12 +79,52 @@ message ConfirmResetPasswordRequest {
 
 message ConfirmResetPasswordResponse {}
 
-service AuthService {
-  rpc Registration(RegistrationRequest) returns (RegistrationResponse);
-  rpc ConfirmRegistration(ConfirmRegistrationRequest) returns (ConfirmRegistrationResponse);
-  rpc Login(LoginRequest) returns (LoginResponse);
-  rpc Logout(LogoutRequest) returns (LogoutResponse);
-  rpc Refresh(RefreshRequest) returns (RefreshResponse);
-  rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
+service ResetPasswordService {
+  rpc InitiateResetPassword(InitiateResetPasswordRequest) returns (InitiateResetPasswordResponse);
   rpc ConfirmResetPassword(ConfirmResetPasswordRequest) returns (ConfirmResetPasswordResponse);
 }
+
+message HasPermissionsRequest {
+  string user_id = 1;
+  string client_id = 2;
+  repeated string permissions = 3;
+}
+
+message HasPermissionsResponse {
+  bool has_permissions = 1;
+}
+
+message GetPermissionsRequest {
+  string user_id = 1;
+  string client_id = 2;
+}
+
+message GetPermissionsResponse {
+  repeated string permissions = 1;
+}
+
+message AddPermissionsRequest {
+  string user_id = 1;
+  string client_id = 2;
+  repeated string permissions = 3;
+}
+
+message AddPermissionsResponse {
+  repeated string permissions = 3;
+}
+
+message RemovePermissionsRequest {
+  string user_id = 1;
+  string client_id = 2;
+  repeated string permissions = 3;
+}
+
+message RemovePermissionsResponse {}
+
+service PermissionService {
+  rpc HasPermissions(HasPermissionsRequest) returns (HasPermissionsResponse);
+  rpc GetPermissions(GetPermissionsRequest) returns (GetPermissionsResponse);
+  rpc AddPermissions(AddPermissionsRequest) returns (AddPermissionsResponse);
+  rpc RemovePermissions(RemovePermissionsRequest) returns (RemovePermissionsResponse);
+}
+  
