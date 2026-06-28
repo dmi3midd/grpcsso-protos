@@ -26,8 +26,7 @@ type RegistrationRequest struct {
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
-	Permissions   []string               `protobuf:"bytes,4,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	ClientId      string                 `protobuf:"bytes,5,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	ClientId      string                 `protobuf:"bytes,4,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -81,13 +80,6 @@ func (x *RegistrationRequest) GetPassword() string {
 		return x.Password
 	}
 	return ""
-}
-
-func (x *RegistrationRequest) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
-	}
-	return nil
 }
 
 func (x *RegistrationRequest) GetClientId() string {
@@ -265,9 +257,8 @@ type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ClientId      string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
-	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	AccessToken   string                 `protobuf:"bytes,4,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,5,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,4,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -312,13 +303,6 @@ func (x *LoginResponse) GetClientId() string {
 func (x *LoginResponse) GetUser() *User {
 	if x != nil {
 		return x.User
-	}
-	return nil
-}
-
-func (x *LoginResponse) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
 	}
 	return nil
 }
@@ -473,9 +457,8 @@ type RefreshResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ClientId      string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	User          *User                  `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
-	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	AccessToken   string                 `protobuf:"bytes,4,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,5,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,4,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -524,13 +507,6 @@ func (x *RefreshResponse) GetUser() *User {
 	return nil
 }
 
-func (x *RefreshResponse) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
-	}
-	return nil
-}
-
 func (x *RefreshResponse) GetAccessToken() string {
 	if x != nil {
 		return x.AccessToken
@@ -550,13 +526,12 @@ var File_auth_proto protoreflect.FileDescriptor
 const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"auth.proto\x12\agrpcsso\"\xa2\x01\n" +
+	"auth.proto\x12\agrpcsso\"\x80\x01\n" +
 	"\x13RegistrationRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12 \n" +
-	"\vpermissions\x18\x04 \x03(\tR\vpermissions\x12\x1b\n" +
-	"\tclient_id\x18\x05 \x01(\tR\bclientId\"/\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x1b\n" +
+	"\tclient_id\x18\x04 \x01(\tR\bclientId\"/\n" +
 	"\x14RegistrationResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"]\n" +
 	"\fLoginRequest\x12\x14\n" +
@@ -566,25 +541,23 @@ const file_auth_proto_rawDesc = "" +
 	"\x04User\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\"\xb9\x01\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"\x97\x01\n" +
 	"\rLoginResponse\x12\x1b\n" +
 	"\tclient_id\x18\x01 \x01(\tR\bclientId\x12!\n" +
-	"\x04user\x18\x02 \x01(\v2\r.grpcsso.UserR\x04user\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12!\n" +
-	"\faccess_token\x18\x04 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x05 \x01(\tR\frefreshToken\"4\n" +
+	"\x04user\x18\x02 \x01(\v2\r.grpcsso.UserR\x04user\x12!\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x04 \x01(\tR\frefreshToken\"4\n" +
 	"\rLogoutRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\x10\n" +
 	"\x0eLogoutResponse\"R\n" +
 	"\x0eRefreshRequest\x12\x1b\n" +
 	"\tclient_id\x18\x01 \x01(\tR\bclientId\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\xbb\x01\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\x99\x01\n" +
 	"\x0fRefreshResponse\x12\x1b\n" +
 	"\tclient_id\x18\x01 \x01(\tR\bclientId\x12!\n" +
-	"\x04user\x18\x02 \x01(\v2\r.grpcsso.UserR\x04user\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12!\n" +
-	"\faccess_token\x18\x04 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x05 \x01(\tR\frefreshToken2\x8b\x02\n" +
+	"\x04user\x18\x02 \x01(\v2\r.grpcsso.UserR\x04user\x12!\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x04 \x01(\tR\frefreshToken2\x8b\x02\n" +
 	"\vAuthService\x12K\n" +
 	"\fRegistration\x12\x1c.grpcsso.RegistrationRequest\x1a\x1d.grpcsso.RegistrationResponse\x126\n" +
 	"\x05Login\x12\x15.grpcsso.LoginRequest\x1a\x16.grpcsso.LoginResponse\x129\n" +

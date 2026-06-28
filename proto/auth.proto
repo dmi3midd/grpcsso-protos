@@ -8,8 +8,7 @@ message RegistrationRequest {
   string username = 1;
   string email = 2;
   string password = 3;
-  repeated string permissions = 4;
-  string client_id = 5;
+  string client_id = 4;
 }
 
 message RegistrationResponse {
@@ -31,9 +30,8 @@ message User {
 message LoginResponse {
   string client_id = 1;
   User user = 2;
-  repeated string permissions = 3;
-  string access_token = 4;
-  string refresh_token = 5;
+  string access_token = 3;
+  string refresh_token = 4;
 }
 
 message LogoutRequest {
@@ -50,9 +48,8 @@ message RefreshRequest {
 message RefreshResponse {
   string client_id = 1;
   User user = 2;
-  repeated string permissions = 3;
-  string access_token = 4;
-  string refresh_token = 5;
+  string access_token = 3;
+  string refresh_token = 4;
 }
 
 service AuthService {
