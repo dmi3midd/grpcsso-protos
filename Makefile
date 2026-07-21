@@ -1,6 +1,6 @@
-.PHONY: proto
+.PHONY: proto-go
 
-proto:
+proto-go:
 	@mkdir -p ./gen/go/grpcssov1
 	@protoc --proto_path=proto \
 		--go_out=./gen/go/grpcssov1 \

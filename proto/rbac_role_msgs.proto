@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package grpcsso;
+
+option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
+
+message GetRoleRequest {
+  string role_id = 1;
+}
+message GetRoleResponse {
+  string role_id = 1;
+  string name = 2;
+}
+
+message CreateRoleRequest {
+  string name = 1;
+}
+message CreateRoleResponse {
+    string role_id = 1;
+}
+
+message DeleteRoleRequest {
+  string role_id = 1;
+}
+message DeleteRoleResponse {
+  string role_id = 1;
+}
+
+message AssignRoleRequest {
+  string role_id = 1;
+  string user_id = 2;
+}
+message AssignRoleResponse {
+    string role_id = 1;
+    string user_id = 2;
+}
+
+message RevokeRoleRequest {
+    string role_id = 1;
+    string user_id = 2;
+}
+message RevokeRoleResponse {
+    string role_id = 1;
+    string user_id = 2;
+}
+
+message GetUserRolesRequest {
+    string user_id = 1;
+}
+message Role {
+    string role_id = 1;
+    string name = 2;
+}
+message GetUserRolesResponse {
+    string user_id = 1;
+    repeated Role roles = 2;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package grpcsso;
+
+import "rbac_role_msgs.proto";
+import "rbac_permission_msgs.proto";
+
+
+option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
+
+service RBACService {
+    // CRUD operations for roles
+    rpc GetRole(GetRoleRequest) returns (GetRoleResponse);
+    rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse);
+    rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse);
+
+    // Role <=> User
+    rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse);
+    rpc RevokeRole(RevokeRoleRequest) returns (RevokeRoleResponse);
+    rpc GetUserRoles(GetUserRolesRequest) returns (GetUserRolesResponse);
+
+    // CRUD operations for permissions
+    rpc GetPermission(GetPermissionRequest) returns (GetPermissionResponse);
+    rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse);
+    rpc DeletePermission(DeletePermissionRequest) returns (DeletePermissionResponse);
+
+    // Permission <=> Role
+    rpc AssignPermission(AssignPermissionRequest) returns (AssignPermissionResponse);
+    rpc RevokePermission(RevokePermissionRequest) returns (RevokePermissionResponse);
+    rpc GetRolePermissions(GetRolePermissionsRequest) returns (GetRolePermissionsResponse);
+}

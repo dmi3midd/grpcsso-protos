@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package grpcsso;
+
+import "auth_msgs.proto";
+
+option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
+
+service AuthService {
+  rpc Registration(RegistrationRequest) returns (RegistrationResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc Refresh(RefreshRequest) returns (RefreshResponse);
+}
