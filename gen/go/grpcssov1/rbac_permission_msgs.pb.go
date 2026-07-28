@@ -654,40 +654,40 @@ var File_rbac_permission_msgs_proto protoreflect.FileDescriptor
 
 const file_rbac_permission_msgs_proto_rawDesc = "" +
 	"\n" +
-	"\x1arbac_permission_msgs.proto\x12\agrpcsso\x1a\x1bbuf/validate/validate.proto\"D\n" +
+	"\x1arbac_permission_msgs.proto\x12\agrpcsso\x1a\x17validate/validate.proto\"D\n" +
 	"\x14GetPermissionRequest\x12,\n" +
-	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\"P\n" +
-	"\x15GetPermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"6\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\"c\n" +
+	"\x15GetPermissionResponse\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12\x1b\n" +
+	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"6\n" +
 	"\x17CreatePermissionRequest\x12\x1b\n" +
-	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"?\n" +
-	"\x18CreatePermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"G\n" +
-	"\x17DeletePermissionRequest\x12,\n" +
-	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\"?\n" +
-	"\x18DeletePermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"i\n" +
-	"\x17AssignPermissionRequest\x12,\n" +
-	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\x12 \n" +
-	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"X\n" +
-	"\x18AssignPermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"i\n" +
-	"\x17RevokePermissionRequest\x12,\n" +
-	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\x12 \n" +
-	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"X\n" +
-	"\x18RevokePermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"=\n" +
-	"\x19GetRolePermissionsRequest\x12 \n" +
-	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"E\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"I\n" +
+	"\x18CreatePermissionResponse\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\"H\n" +
+	"\x17DeletePermissionRequest\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\"I\n" +
+	"\x18DeletePermissionResponse\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\"k\n" +
+	"\x17AssignPermissionRequest\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12!\n" +
+	"\arole_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\"l\n" +
+	"\x18AssignPermissionResponse\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12!\n" +
+	"\arole_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\"k\n" +
+	"\x17RevokePermissionRequest\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12!\n" +
+	"\arole_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\"l\n" +
+	"\x18RevokePermissionResponse\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12!\n" +
+	"\arole_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\">\n" +
+	"\x19GetRolePermissionsRequest\x12!\n" +
+	"\arole_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\"X\n" +
 	"\n" +
-	"Permission\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"l\n" +
-	"\x1aGetRolePermissionsResponse\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\x125\n" +
+	"Permission\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12\x1b\n" +
+	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"v\n" +
+	"\x1aGetRolePermissionsResponse\x12!\n" +
+	"\arole_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\x125\n" +
 	"\vpermissions\x18\x02 \x03(\v2\x13.grpcsso.PermissionR\vpermissionsB5Z3github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1b\x06proto3"
 
 var (
