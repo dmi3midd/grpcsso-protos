@@ -2,56 +2,58 @@ syntax = "proto3";
 
 package grpcsso;
 
+import "buf/validate/validate.proto";
+
 option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
 
 message GetPermissionRequest {
-    string permission_id = 1;
+    string permission_id = 1 [(buf.validate.field).string.min_len = 1];
 }
 message GetPermissionResponse {
-    string permission_id = 1;
-    string name = 2;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
+    string name = 2 [(buf.validate.field).string.min_len = 1];
 }
 
 message CreatePermissionRequest {
-    string name = 1;
+    string name = 1 [(buf.validate.field).string.min_len = 1];
 }
 message CreatePermissionResponse {
-    string permission_id = 1;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message DeletePermissionRequest {
-    string permission_id = 1;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
 }
 message DeletePermissionResponse {
-    string permission_id = 1;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message AssignPermissionRequest {
-    string permission_id = 1;
-    string role_id = 2;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
+    string role_id = 2 [(buf.validate.field).string.uuid = true];
 }
 message AssignPermissionResponse {
-    string permission_id = 1;
-    string role_id = 2;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
+    string role_id = 2 [(buf.validate.field).string.uuid = true];
 }
 
 message RevokePermissionRequest {
-    string permission_id = 1;
-    string role_id = 2;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
+    string role_id = 2 [(buf.validate.field).string.uuid = true];
 }
 message RevokePermissionResponse {
-    string permission_id = 1;
-    string role_id = 2;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
+    string role_id = 2 [(buf.validate.field).string.uuid = true];
 }
 
 message GetRolePermissionsRequest {
-    string role_id = 1;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
 }
 message Permission {
-    string permission_id = 1;
-    string name = 2;
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
+    string name = 2 [(buf.validate.field).string.min_len = 1];
 }
 message GetRolePermissionsResponse {
-    string role_id = 1;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
     repeated Permission permissions = 2;
 }

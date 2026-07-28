@@ -2,56 +2,58 @@ syntax = "proto3";
 
 package grpcsso;
 
+import "buf/validate/validate.proto";
+
 option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
 
 message GetRoleRequest {
-  string role_id = 1;
+  string role_id = 1 [(buf.validate.field).string.uuid = true];
 }
 message GetRoleResponse {
-  string role_id = 1;
-  string name = 2;
+  string role_id = 1 [(buf.validate.field).string.uuid = true];
+  string name = 2 [(buf.validate.field).string.min_len = 1];
 }
 
 message CreateRoleRequest {
-  string name = 1;
+  string name = 1 [(buf.validate.field).string.min_len = 1];
 }
 message CreateRoleResponse {
-    string role_id = 1;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message DeleteRoleRequest {
-  string role_id = 1;
+  string role_id = 1 [(buf.validate.field).string.uuid = true];
 }
 message DeleteRoleResponse {
-  string role_id = 1;
+  string role_id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message AssignRoleRequest {
-  string role_id = 1;
-  string user_id = 2;
+  string role_id = 1 [(buf.validate.field).string.uuid = true];
+  string user_id = 2 [(buf.validate.field).string.uuid = true];
 }
 message AssignRoleResponse {
-    string role_id = 1;
-    string user_id = 2;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
+    string user_id = 2 [(buf.validate.field).string.uuid = true];
 }
 
 message RevokeRoleRequest {
-    string role_id = 1;
-    string user_id = 2;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
+    string user_id = 2 [(buf.validate.field).string.uuid = true];
 }
 message RevokeRoleResponse {
-    string role_id = 1;
-    string user_id = 2;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
+    string user_id = 2 [(buf.validate.field).string.uuid = true];
 }
 
 message GetUserRolesRequest {
-    string user_id = 1;
+    string user_id = 1 [(buf.validate.field).string.uuid = true];
 }
 message Role {
-    string role_id = 1;
-    string name = 2;
+    string role_id = 1 [(buf.validate.field).string.uuid = true];
+    string name = 2 [(buf.validate.field).string.min_len = 1];
 }
 message GetUserRolesResponse {
-    string user_id = 1;
+    string user_id = 1 [(buf.validate.field).string.uuid = true];
     repeated Role roles = 2;
 }

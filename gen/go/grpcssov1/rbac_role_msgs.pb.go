@@ -7,6 +7,7 @@
 package grpcssov1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -653,34 +654,34 @@ var File_rbac_role_msgs_proto protoreflect.FileDescriptor
 
 const file_rbac_role_msgs_proto_rawDesc = "" +
 	"\n" +
-	"\x14rbac_role_msgs.proto\x12\agrpcsso\")\n" +
-	"\x0eGetRoleRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\">\n" +
+	"\x14rbac_role_msgs.proto\x12\agrpcsso\x1a\x1bbuf/validate/validate.proto\"2\n" +
+	"\x0eGetRoleRequest\x12 \n" +
+	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\">\n" +
 	"\x0fGetRoleResponse\x12\x17\n" +
 	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"'\n" +
-	"\x11CreateRoleRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"-\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"0\n" +
+	"\x11CreateRoleRequest\x12\x1b\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"-\n" +
 	"\x12CreateRoleResponse\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\",\n" +
-	"\x11DeleteRoleRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\"-\n" +
+	"\arole_id\x18\x01 \x01(\tR\x06roleId\"5\n" +
+	"\x11DeleteRoleRequest\x12 \n" +
+	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"-\n" +
 	"\x12DeleteRoleResponse\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\"E\n" +
-	"\x11AssignRoleRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\"F\n" +
+	"\arole_id\x18\x01 \x01(\tR\x06roleId\"W\n" +
+	"\x11AssignRoleRequest\x12 \n" +
+	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\x12 \n" +
+	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06userId\"F\n" +
 	"\x12AssignRoleResponse\x12\x17\n" +
 	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\"E\n" +
-	"\x11RevokeRoleRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\"F\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"W\n" +
+	"\x11RevokeRoleRequest\x12 \n" +
+	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\x12 \n" +
+	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06userId\"F\n" +
 	"\x12RevokeRoleResponse\x12\x17\n" +
 	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\".\n" +
-	"\x13GetUserRolesRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"3\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"7\n" +
+	"\x13GetUserRolesRequest\x12 \n" +
+	"\auser_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06userId\"3\n" +
 	"\x04Role\x12\x17\n" +
 	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"T\n" +

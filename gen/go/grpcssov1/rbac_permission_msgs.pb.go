@@ -7,6 +7,7 @@
 package grpcssov1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -653,34 +654,34 @@ var File_rbac_permission_msgs_proto protoreflect.FileDescriptor
 
 const file_rbac_permission_msgs_proto_rawDesc = "" +
 	"\n" +
-	"\x1arbac_permission_msgs.proto\x12\agrpcsso\";\n" +
-	"\x14GetPermissionRequest\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"P\n" +
+	"\x1arbac_permission_msgs.proto\x12\agrpcsso\x1a\x1bbuf/validate/validate.proto\"D\n" +
+	"\x14GetPermissionRequest\x12,\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\"P\n" +
 	"\x15GetPermissionResponse\x12#\n" +
 	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"-\n" +
-	"\x17CreatePermissionRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"?\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"6\n" +
+	"\x17CreatePermissionRequest\x12\x1b\n" +
+	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"?\n" +
 	"\x18CreatePermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\">\n" +
-	"\x17DeletePermissionRequest\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"?\n" +
+	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"G\n" +
+	"\x17DeletePermissionRequest\x12,\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\"?\n" +
 	"\x18DeletePermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"W\n" +
-	"\x17AssignPermissionRequest\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"X\n" +
+	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"i\n" +
+	"\x17AssignPermissionRequest\x12,\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\x12 \n" +
+	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"X\n" +
 	"\x18AssignPermissionResponse\x12#\n" +
 	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"W\n" +
-	"\x17RevokePermissionRequest\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"X\n" +
+	"\arole_id\x18\x02 \x01(\tR\x06roleId\"i\n" +
+	"\x17RevokePermissionRequest\x12,\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\x12 \n" +
+	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"X\n" +
 	"\x18RevokePermissionResponse\x12#\n" +
 	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"4\n" +
-	"\x19GetRolePermissionsRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\"E\n" +
+	"\arole_id\x18\x02 \x01(\tR\x06roleId\"=\n" +
+	"\x19GetRolePermissionsRequest\x12 \n" +
+	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x06roleId\"E\n" +
 	"\n" +
 	"Permission\x12#\n" +
 	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x12\n" +
