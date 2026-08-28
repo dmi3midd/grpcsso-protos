@@ -654,7 +654,7 @@ var File_rbac_role_msgs_proto protoreflect.FileDescriptor
 
 const file_rbac_role_msgs_proto_rawDesc = "" +
 	"\n" +
-	"\x14rbac_role_msgs.proto\x12\agrpcsso\x1a\x17validate/validate.proto\"3\n" +
+	"\x14rbac_role_msgs.proto\x12\agrpcsso\x1a\x1bbuf/validate/validate.proto\"3\n" +
 	"\x0eGetRoleRequest\x12!\n" +
 	"\arole_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06roleId\"Q\n" +
 	"\x0fGetRoleResponse\x12!\n" +

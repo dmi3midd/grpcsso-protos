@@ -654,9 +654,9 @@ var File_rbac_permission_msgs_proto protoreflect.FileDescriptor
 
 const file_rbac_permission_msgs_proto_rawDesc = "" +
 	"\n" +
-	"\x1arbac_permission_msgs.proto\x12\agrpcsso\x1a\x17validate/validate.proto\"D\n" +
-	"\x14GetPermissionRequest\x12,\n" +
-	"\rpermission_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\fpermissionId\"c\n" +
+	"\x1arbac_permission_msgs.proto\x12\agrpcsso\x1a\x1bbuf/validate/validate.proto\"E\n" +
+	"\x14GetPermissionRequest\x12-\n" +
+	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\"c\n" +
 	"\x15GetPermissionResponse\x12-\n" +
 	"\rpermission_id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fpermissionId\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x04name\"6\n" +

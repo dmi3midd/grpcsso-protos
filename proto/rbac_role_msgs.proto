@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package grpcsso;
 
-import "validate/validate.proto";
+import "buf/validate/validate.proto";
 
 option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
 

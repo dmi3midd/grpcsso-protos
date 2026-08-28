@@ -486,7 +486,7 @@ var File_auth_msgs_proto protoreflect.FileDescriptor
 
 const file_auth_msgs_proto_rawDesc = "" +
 	"\n" +
-	"\x0fauth_msgs.proto\x12\agrpcsso\x1a\x17validate/validate.proto\"\x82\x01\n" +
+	"\x0fauth_msgs.proto\x12\agrpcsso\x1a\x1bbuf/validate/validate.proto\"\x82\x01\n" +
 	"\x13RegistrationRequest\x12%\n" +
 	"\busername\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18 R\busername\x12\x1d\n" +
 	"\x05email\x18\x02 \x01(\tB\a\xbaH\x04r\x02`\x01R\x05email\x12%\n" +

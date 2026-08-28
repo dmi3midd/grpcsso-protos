@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package grpcsso;
 
-import "validate/validate.proto";
+import "buf/validate/validate.proto";
 
 option go_package = "github.com/dmi3midd/grpcsso-protos/gen/go/grpcssov1";
 
 message GetPermissionRequest {
-    string permission_id = 1 [(buf.validate.field).string.min_len = 1];
+    string permission_id = 1 [(buf.validate.field).string.uuid = true];
 }
 message GetPermissionResponse {
     string permission_id = 1 [(buf.validate.field).string.uuid = true];
